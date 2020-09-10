@@ -5,7 +5,7 @@ public class CartVisitorImpl implements CartVisitor{
 	@Override
 	public int visit(TaxableProduct tax) {
 
-		double price= tax.getPrice();
+		double price= tax.getQuantity()*tax.getPrice();
 		double salesTax=0;
 		if(tax.isImported()==true)
 			salesTax=.15*price;
@@ -23,7 +23,7 @@ public class CartVisitorImpl implements CartVisitor{
 	@Override
 	public int visit(NonTaxableProduct nontax) {
 		// TODO Auto-generated method stub
-		double price=nontax.getPrice();
+		double price=nontax.getQuantity()*nontax.getPrice();
 		double salesTax=0;
 		if(nontax.isImported()==true) {
 			salesTax=.05*price;
